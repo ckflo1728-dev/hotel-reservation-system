@@ -1,0 +1,151 @@
+index.html
+style.css
+
+app.js
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ocean View Hotel - Reservations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f4f4;
+        }
+
+        header {
+            background: #1e3a5f;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .room {
+            background: white;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        button {
+            background: #1e3a5f;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+
+        .confirmation {
+            display: none;
+            background: #d4edda;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Ocean View Hotel</h1>
+    <p>Book your stay today</p>
+</header>
+
+<div class="container">
+
+    <h2>Available Rooms</h2>
+
+    <div class="room">
+        <h3>Standard Room</h3>
+        <p>$100 per night</p>
+        <button onclick="selectRoom('Standard Room')">
+            Book This Room
+        </button>
+    </div>
+
+    <div class="room">
+        <h3>Deluxe Room</h3>
+        <p>$175 per night</p>
+        <button onclick="selectRoom('Deluxe Room')">
+            Book This Room
+        </button>
+    </div>
+
+    <div class="room">
+        <h3>Luxury Suite</h3>
+        <p>$300 per night</p>
+        <button onclick="selectRoom('Luxury Suite')">
+            Book This Room
+        </button>
+    </div>
+
+
+    <h2>Reservation</h2>
+
+    <input id="name" placeholder="Full Name">
+
+    <input id="date" type="date">
+
+    <select id="guests">
+        <option>1 Guest</option>
+        <option>2 Guests</option>
+        <option>3 Guests</option>
+        <option>4 Guests</option>
+    </select>
+
+    <button onclick="reserve()">
+        Confirm Reservation
+    </button>
+
+
+    <div class="confirmation" id="message"></div>
+
+</div>
+
+
+<script>
+
+let selectedRoom = "";
+
+function selectRoom(room){
+    selectedRoom = room;
+    alert(room + " selected");
+}
+
+function reserve(){
+
+    let name = document.getElementById("name").value;
+    let date = document.getElementById("date").value;
+
+    if(name == "" || date == "" || selectedRoom == ""){
+        alert("Please complete all information.");
+        return;
+    }
+
+    document.getElementById("message").style.display="block";
+
+    document.getElementById("message").innerHTML =
+    "Reservation confirmed!<br><br>" +
+    "Guest: " + name +
+    "<br>Room: " + selectedRoom +
+    "<br>Date: " + date;
+}
+
+</script>
+
+</body>
+</html>
